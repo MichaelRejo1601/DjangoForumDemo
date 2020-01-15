@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 from .forms import CreatePost
 # Create your views here.
@@ -11,11 +11,13 @@ def dynamic_post_view (request, id):
 def post_create(request):
     if request.method == "POST":
         form = CreatePost(request.POST)
+        print("Created")
         if form.is_valid():
             print("Posted")
             form.save()
+            return redirect('post')
     else:
         form = CreatePost()
-        print("Not POsted")
-    context = {'form': form}
-    return render(request, 'createpost.html', context)
+        print("Retrieved")
+        context = {'form': form}
+        return render(request, 'createpost.html', context)
