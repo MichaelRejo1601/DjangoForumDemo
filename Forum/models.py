@@ -10,4 +10,4 @@ class Post(models.Model):
     author = models.CharField(max_length=100)
     def __str__(self):
         """Return a string representation of the model."""
-        return self.title
+        return str(self.id) + ". " + self.title 
