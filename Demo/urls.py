@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Forum.views import dynamic_post_view
+import Forum.views as views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('post/<int:id>/', dynamic_post_view, name="post"),
+    path('post/<int:id>/', views.dynamic_post_view, name="post"),
+    path('createpost', views.post_create, name="create")
 ]
