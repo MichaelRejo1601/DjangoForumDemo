@@ -22,3 +22,8 @@ def post_create(request):
         print("Retrieved")
         context = {'form': form}
         return render(request, 'createpost.html', context)
+
+def feed(request):
+    posts = Post.objects.order_by('id')
+    context = {"posts": posts}
+    return render(request, "feed.html", context)

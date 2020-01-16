@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <section class="container margin-top">
+      {% for post in posts %}
+        <a href='/post/{{post.id}}'>{{post.title}} - {{post.author}} ({{post.date}})</a> <br>
+      {% endfor %}
+    </section>
+
+</body>
+
+</html>
