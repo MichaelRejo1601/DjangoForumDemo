@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CreatePost
 # Create your views here.
@@ -15,7 +16,7 @@ def post_create(request):
         if form.is_valid():
             print("Posted")
             form.save()
-            return redirect('post')
+            return HttpResponseRedirect('/post/' + str(Post.objects.latest('id').id))
     else:
         form = CreatePost()
         print("Retrieved")
