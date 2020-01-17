@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/<int:id>/', views.dynamic_post_view, name="post"),
     path('createpost', views.post_create, name="create"),
-    path('feed', views.feed, name = "feed")
+    path('feed', views.feed, name = "feed"),
+    path('', views.feed, name = "index")
 ]
