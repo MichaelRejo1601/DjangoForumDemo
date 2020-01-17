@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.urls import include
 import Forum.views as views
 
 urlpatterns = [
@@ -23,5 +23,9 @@ urlpatterns = [
     path('post/<int:id>/', views.dynamic_post_view, name="post"),
     path('createpost', views.post_create, name="create"),
     path('feed', views.feed, name = "feed"),
-    path('', views.feed, name = "index")
+    path('', views.feed, name = "index"),
+    path('register', views.register, name = "register"),
+    path('login', views.login, name = "login"),
+    path('', include("django.contrib.auth.urls")),
+
 ]
