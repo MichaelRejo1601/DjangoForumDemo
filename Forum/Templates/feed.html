@@ -5,9 +5,15 @@
 
     <section class="container margin-top">
       {% for post in posts %}
-        <a href='/post/{{post.id}}'>{{post.title}} - {{post.author}} ({{post.date}})</a> <br>
+        <a href='/post/{{post.id}}'>{{post.title}} - {{post.author}}</a> ({{post.date}}) <br>
       {% endfor %}
     </section>
+
+    <div class="row">
+      <h1>
+        <a href='/createpost'>Create Post</a> <br>
+      </h1>
+    </div>
 
 </body>
 
