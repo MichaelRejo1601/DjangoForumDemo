@@ -25,7 +25,6 @@ urlpatterns = [
     path('feed', views.feed, name = "feed"),
     path('', views.feed, name = "index"),
     path('register', views.register, name = "register"),
-    path('login', views.login, name = "login"),
     path('', include("django.contrib.auth.urls")),
-
+    path('user/<str:username>/', views.dynamic_account_view, name="account")
 ]

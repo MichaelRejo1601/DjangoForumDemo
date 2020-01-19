@@ -4,19 +4,29 @@ from .models import Post
 from .forms import CreatePost
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
-
+@login_required
 def dynamic_post_view (request, id):
     post = Post.objects.get(id=id)
     context = {"post": post}
     return render(request, "post.html", context)
 
+@login_required
+def dynamic_account_view (request, username):
+    account = User.objects.get(username=username)
+    context = {"account": account}
+    return render(request, "user.html", context)
+
+@login_required
 def post_create(request):
     if request.method == "POST":
         form = CreatePost(request.POST)
         print("Created")
         if form.is_valid():
-            print("Posted")
+            post = form.save(commit=False)
+            post.author = request.user
             form.save()
             return HttpResponseRedirect('/post/' + str(Post.objects.latest('id').id))
     else:
@@ -25,6 +35,7 @@ def post_create(request):
         context = {'form': form}
         return render(request, 'createpost.html', context)
 
+@login_required
 def feed(request):
     posts = Post.objects.order_by('id')
     context = {"posts": posts}
@@ -37,7 +48,7 @@ def register(response):
         if form.is_valid():
             form.save()
             print('Done')
-            return render(response, "login.html")
+            return HttpResponseRedirect('/login')
     else:
         form =  UserCreationForm()
         context = {'form':form}
