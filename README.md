@@ -13,5 +13,7 @@ pip install -r \*path-to*\requirements.txt
 to activate 'venv .\scripts\activate'
 
 /BigFolder [create venv here]
+
 /BigFolder/Scripts
+
 /BigFolder/GithubRepo [clone here]
