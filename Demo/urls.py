@@ -21,10 +21,11 @@ import Forum.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/<int:id>/', views.dynamic_post_view, name="post"),
-    path('createpost', views.post_create, name="create"),
-    path('feed', views.feed, name = "feed"),
+    path('createpost/', views.post_create, name="create"),
+    path('feed/', views.feed, name = "feed"),
     path('', views.feed, name = "index"),
-    path('register', views.register, name = "register"),
+    path('register/', views.register, name = "register"),
     path('', include("django.contrib.auth.urls")),
-    path('user/<str:username>/', views.dynamic_account_view, name="account")
+    path('user/<str:username>/', views.dynamic_account_view, name="account"),
+    path('delete/<int:id>/', views.delete, name="delete"),
 ]

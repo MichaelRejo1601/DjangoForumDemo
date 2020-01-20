@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1@)l2yvka@6&(7!2lh(z&jzi#khdyuwi@h(ozhbeer&rqu!)u('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Pacific'
 
 USE_I18N = True
 
@@ -128,3 +128,4 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/feed'
 LOGOUT_REDIRECT_URL = '/login'
+APPEND_SLASH = True

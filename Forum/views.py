@@ -6,7 +6,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.http import HttpResponseForbidden
+from django.core.exceptions import PermissionDenied
 # Create your views here.
 @login_required
 def dynamic_post_view (request, id):
@@ -63,3 +64,11 @@ def register(response):
         form =  UserCreationForm()
         context = {'form':form}
         return render(response, "register.html", context)
+
+@login_required
+def delete(request, id):
+    if str(request.user) == str(Post.objects.get(id=id).author):
+        Post.objects.get(id=id).delete()
+        return HttpResponseRedirect('/user/' + str(request.user))
+    else:
+        raise PermissionDenied()
