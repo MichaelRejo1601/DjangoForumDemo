@@ -31,7 +31,7 @@
         <ul class="navbar-nav ml-auto">
           {% if account == user %}
           <li class="nav-item">
-            <a class="nav-link" href="/createpost">Create Post</a>
+            <a class="nav-link" href="/createpost">Create Post✏️</a>
           </li>
           {% else %}
           <li class="nav-item">
@@ -46,7 +46,20 @@
     </div>
   </nav>
 
-  <div class="container" style="margin-top:10%;">
+  <div class="container" style="margin-top:7%;">
+    {% if account == user %}
+      {% if posts.count > 0 %}
+        <h2 style="margin: 3%;">Your Posts</h2>
+      {% else %}
+        <h2 style="margin: 3%;">It's kinda lonely here ;~;. Create your first post! </h2>
+      {% endif %}
+    {% else %}
+      {% if posts.count > 0 %}
+        <h2 style="margin: 3%;">{{account}}'s Posts</h2>
+      {% else %}
+        <h2 style="margin: 3%;">It seems {{account}} has not created any posts...</h2>
+      {% endif %}
+    {% endif %}
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         {% for post in posts %}
