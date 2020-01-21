@@ -8,3 +8,16 @@ class CreatePost(forms.ModelForm):
     class Meta:
         model = models.Post
         fields = ['title', 'text']
+        labels = {
+                'text': 'Post: ',
+                'title': 'Title: ',
+            }
+
+class CreateComment(forms.ModelForm):
+
+    class Meta:
+        model = models.Comment
+        fields = ['text']
+        labels = {
+                'text': 'Comment: ',
+            }

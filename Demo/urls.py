@@ -29,5 +29,6 @@ urlpatterns = [
     path('register/', views.register, name = "register"),
     path('', include("django.contrib.auth.urls")),
     path('user/<str:username>/', views.dynamic_account_view, name="account"),
-    path('delete/<int:id>/', views.delete, name="delete"),
+    path('delete/<int:id>/', views.delete, name="delete"),\
+    path('cdelete/<int:id>/', views.comment_delete, name="cdelete"),
 ]
