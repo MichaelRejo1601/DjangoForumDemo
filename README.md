@@ -28,6 +28,10 @@ On my page, you can find a delete post button on each post. This will redirect y
 *Post*
 Using dynamic urls, similar to the User page, we are able to create a post page. This displays the information of the post and has urls to the authors of the post.
 
+*Comment* 
+
+NEWLY ADDED! Just go to any post and submit the form! You will see your comment appear. You can also delete these comments as needed. 
+
 Try making 2 accounts and test out all the features!
 
 **Instructions**
