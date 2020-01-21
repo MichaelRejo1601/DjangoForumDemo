@@ -26,8 +26,7 @@ def dynamic_post_view (request, id):
             fpost.author = request.user
             fpost.post = post
             fpost.save()
-            context = {"post": post, "form": form, "comments":comments}
-            return render(request, "post.html", context)
+            return HttpResponseRedirect('/post/' + str(post.id) + "#" + str(fpost.id))
         else:
             form = new
             context = {"post": post, "form": form, "comments":comments}
