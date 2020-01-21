@@ -8,13 +8,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseForbidden
 from django.core.exceptions import PermissionDenied
-# Create your views here.
+
+#Contributers: Derek, Michael
+
+#Login Required Decorator after each page where authentication is needed.
+#Renders a page based on the Post (gained from url) and template post.html
 @login_required
 def dynamic_post_view (request, id):
     post = Post.objects.get(id=id)
     context = {"post": post}
     return render(request, "post.html", context)
 
+#creates a page based on teh user (gained from url) and template user.html
 @login_required
 def dynamic_account_view (request, username):
     account = User.objects.get(username=username)
@@ -24,6 +29,7 @@ def dynamic_account_view (request, username):
             }
     return render(request, "user.html", context)
 
+#creates a post if method == POST and returns a page with a form if it is GET.
 @login_required
 def post_create(request):
     if request.method == "POST":
@@ -43,12 +49,14 @@ def post_create(request):
         context = {'form': form}
     return render(request, 'createpost.html', context)
 
+#Returns a Page with the template feed.html and the posts list of Post objects.
 @login_required
 def feed(request):
     posts = Post.objects.order_by('-id')[:20]
     context = {"posts": posts}
     return render(request, "feed.html", context)
 
+#Creates a new User if the response type is POST and redirects to /login. Otherwise, if GET, returns a page with a registration form.
 def register(response):
     if response.method == "POST":
         form =  UserCreationForm(response.POST)
@@ -65,6 +73,7 @@ def register(response):
         context = {'form':form}
         return render(response, "register.html", context)
 
+#if url is called, it will delelte the specified object based on the dynamic url. However, if the user is not the loged in user, it will deny permission, fixing a possible vunerability.
 @login_required
 def delete(request, id):
     if str(request.user) == str(Post.objects.get(id=id).author):

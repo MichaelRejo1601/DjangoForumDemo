@@ -13,11 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#Contributers: Derek, Michael
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
 import Forum.views as views
 
+#Matches Urls to Views to Reverse Lookup Name
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/<int:id>/', views.dynamic_post_view, name="post"),
