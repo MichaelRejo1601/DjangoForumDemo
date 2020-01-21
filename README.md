@@ -1,19 +1,3 @@
 # DjangoForumDemo
 
-python 3.7.6 but it probs doesnt matter 
-
-Do 'pip install venv'
-
-create a virtual environment using 'mkvirtualenv [environment_name]'
-
-activate using 'venv .\scripts\activate'
-
-pip install -r \*path-to*\requirements.txt
-
-to activate 'venv .\scripts\activate'
-
-/BigFolder [create venv here]
-
-/BigFolder/Scripts
-
-/BigFolder/GithubRepo [clone here]
+For this project, we decided to use the python-based Django to create a web application forum similar to Reddit. To accomplish this, we took from online examples and documentation. As an overview, our web application uses an SQLite database to hold our forum posts. We decided to use Django primarily as a proof of concept to see the number of hours it would take to create a barebones forum website. The features we created include: login page, feed page (all posts), create post page, and the post itself. Some attributes for these posts include the title, the author, the date, and the content published. Using Django, we were able to standup a basic forum in a few days. Django also has many built-in features which we can use to implement extras. For example, it helped greatly in creating a secure login page and in referencing the SQLite formatted data. By using Django, we quickly were able to make a functional prototype to be styled and updated if we wish to continue. We learned how to use Django a fast, scalable python based framework.
